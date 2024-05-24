@@ -477,8 +477,10 @@ const pushWxPusher = (title, desp) => {
       }
     });
 };
+// 访问 GitHub Actions 设置的环境变量
+const webhookUrl = process.env.PUSH_PLUS_WEBHOOK;
 const pushPushplus = (title, desp) => {
-  if (!pushPlus.token) {
+  if (!pushPlus.token || !webhookUrl) {
     return;
   }
   const data = {
@@ -486,23 +488,24 @@ const pushPushplus = (title, desp) => {
     token: pushPlus.token,
     title,
     content: desp,
-    channel:webhook,
-    webhook:001
+    channel: "webhook",
+    webhook: webhookUrl // 使用从环境变量获取的 webhook URL
   };
   superagent
-    .post("http://www.pushplus.plus/send")
+    .post(webhookUrl) // 发送 POST 请求到 webhook URL
     .send(data)
-    .end((err, res) => {
-      if (err) {
-        logger.error(`pushPlus推送失败:${JSON.stringify(err)}`);
-        return;
-      }
+    .then((res) => {
+      // 处理响应
       const json = JSON.parse(res.text);
-      if (json.code !== 200) {
-        logger.error(`pushPlus推送失败:${JSON.stringify(json)}`);
-      } else {
+      if (json.code === 200) {
         logger.info("pushPlus推送成功");
+      } else {
+        logger.error(`pushPlus推送失败:${JSON.stringify(json)}`);
       }
+    })
+    .catch((err) => {
+      // 处理错误
+      logger.error(`pushPlus推送失败:${JSON.stringify(err)}`);
     });
 };
 
