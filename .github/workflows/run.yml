@@ -47,6 +47,7 @@ jobs:
           WX_PUSHER_UID: ${{secrets.WX_PUSHER_UID}}
           # PushPlus
           PUSHPLUS_TOKEN: ${{secrets.PUSHPLUS_TOKEN}}
+          PUSH_PLUS_WEBHOOK: ${{ secrets.PUSH_PLUS_WEBHOOK}}
         with:
           timeout_minutes: 10
           max_attempts: 3
