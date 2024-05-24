@@ -21,7 +21,7 @@ jobs:
         run: npm install
       - name: run
         id: run
-        uses: nick-fields/retry@v2
+        uses: nick-fields/retry@v3
         env:
           TY_USER_NAME: ${{secrets.TY_USER_NAME}}
           TY_PASSWORD: ${{secrets.TY_PASSWORD}}
