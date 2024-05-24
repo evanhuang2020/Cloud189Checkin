@@ -488,6 +488,7 @@ const pushPushplus = (title, desp) => {
     token: pushPlus.token,
     title,
     content: desp,
+    msg_type: 'html',
     channel: "webhook",
     webhook: webhookUrl // 使用从环境变量获取的 webhook URL
   };
