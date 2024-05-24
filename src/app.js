@@ -486,6 +486,8 @@ const pushPushplus = (title, desp) => {
     token: pushPlus.token,
     title,
     content: desp,
+    channel:webhook,
+    webhook:001
   };
   superagent
     .post("http://www.pushplus.plus/send")
