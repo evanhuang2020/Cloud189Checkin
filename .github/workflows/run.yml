@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: 20
       - name: init
         run: npm install
       - name: run
