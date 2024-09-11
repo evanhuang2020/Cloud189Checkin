@@ -1,3 +1,3 @@
 module.exports = {
-  sendKey: process.env.BarkKEY || '',
+  sendKey: process.env.BARKKEY || '',
 };
