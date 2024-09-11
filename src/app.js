@@ -21,7 +21,7 @@ const JSEncrypt = require("node-jsencrypt");
 const superagent = require("superagent");
 const crypto = require("crypto");
 const serverChan = require("./push/serverChan");
-const Bark = require("./push/pushBark");
+const barksend = require("./push/pushBark");
 const telegramBot = require("./push/telegramBot");
 const wecomBot = require("./push/wecomBot");
 const wxpush = require("./push/wxPusher");
@@ -540,6 +540,7 @@ const push = (title, desp) => {
   pushWecomBot(title, desp);
   pushWxPusher(title, desp);
   pushPushplus(title, desp);
+  pushBark(title, desp);
 };
 
 // 开始执行程序
