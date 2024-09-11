@@ -395,8 +395,8 @@ const pushServerChan = (title, desp) => {
     });
 };
 
-const pushBark = (title, desp) => {
-  if (!Bark.sendKey) {
+const pushBarksent = (title, desp) => {
+  if (!pushBark.sendKey) {
     logger.warn('Bark推送Key未设置');
     return;
   }
@@ -540,7 +540,7 @@ const push = (title, desp) => {
   pushWecomBot(title, desp);
   pushWxPusher(title, desp);
   pushPushplus(title, desp);
-  pushBark(title, desp);
+  pushBarksent(title, desp);
 };
 
 // 开始执行程序
